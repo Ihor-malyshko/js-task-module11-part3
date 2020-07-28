@@ -18,3 +18,22 @@ body {
    */
   background-image: url('./images/bg-pattern.png');
 }
+
+.timer {
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
+}
+.field {
+  display: flex;
+  flex-direction: column;
+}
+.value {
+  font-size: 70px;
+}
+.label {
+}
+
+.dots {
+  font-size: 80px;
+}
