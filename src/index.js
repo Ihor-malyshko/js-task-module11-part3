@@ -1,2 +1,2 @@
 import './styles.css';
-import './js/timet';
+import './js/set-timer';

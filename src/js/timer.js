@@ -1,4 +1,3 @@
-console.log('start');
 const refs = {
   days: document.querySelector('[days]'),
   hours: document.querySelector('[hours]'),
@@ -9,9 +8,16 @@ const refs = {
 
 const timer = {
   intervalId: null,
-  start() {
-    const startTime = Date.now() + 10000;
-    intervalId = setInterval(() => {
+  activ: false,
+  // @time - in second
+  start(time) {
+    if (this.activ) {
+      console.log("Sorry I'm already ran");
+      return;
+    }
+    this.activ = true;
+    const startTime = Date.now() + time * 1000;
+    this.intervalId = setInterval(() => {
       const currentTime = Date.now();
       const deltaTime = startTime - currentTime;
       if (deltaTime > 0) {
@@ -23,12 +29,11 @@ const timer = {
     }, 1000);
   },
   stop() {
-    clearInterval(intervalId);
-    intervalId = null;
+    this.activ = false;
+    clearInterval(this.intervalId);
+    this.intervalId = null;
   },
 };
-
-timer.start();
 
 function updateClockface(time) {
   /*
@@ -67,4 +72,4 @@ function pad(value) {
   return String(value).padStart(2, '0');
 }
 
-console.log('end');
+export default timer;
