@@ -36,6 +36,14 @@ const timer = {
 };
 
 function updateClockface(time) {
+  let clocktime = updateTime(time);
+  refs.days.textContent = clocktime.days;
+  refs.hours.textContent = clocktime.hours;
+  refs.mins.textContent = clocktime.mins;
+  refs.secs.textContent = clocktime.secs;
+}
+
+function updateTime(time) {
   /*
    * Оставшиеся дни: делим значение UTC на 1000 * 60 * 60 * 24, количество
    * миллисекунд в одном дне (миллисекунды * секунды * минуты * часы)
@@ -62,10 +70,7 @@ function updateClockface(time) {
    * миллисекунд в одной секунде (1000)
    */
   const secs = pad(Math.floor((time % (1000 * 60)) / 1000));
-  refs.days.textContent = days;
-  refs.hours.textContent = hours;
-  refs.mins.textContent = mins;
-  refs.secs.textContent = secs;
+  return { days, hours, mins, secs };
 }
 
 function pad(value) {
